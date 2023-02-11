@@ -11,7 +11,7 @@ $webroot = dirname($basePath);
 
 $config = [
     'id' => 'app',
-    'name' => "Raffle",
+    'name' => 'Try Explain',
     'basePath' => $basePath,
     'bootstrap' => ['log'],
     'language' => 'ru-RU',
