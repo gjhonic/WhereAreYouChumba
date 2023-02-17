@@ -1,17 +1,28 @@
 <?php
+if (!file_exists(__DIR__ . '/.env')) {
+    echo '<strong>Error</strong>: Create file <strong>.env</strong> in app/config path';
+    die(0);
+}
+$_ENV = array_merge($_ENV, require(__DIR__ . '/.env'));
 
-$params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$params = require __DIR__ . '/params.php';
+
+$basePath =  dirname(__DIR__);
+$webroot = dirname($basePath);
 
 $config = [
-    'id' => 'basic-console',
-    'basePath' => dirname(__DIR__),
+    'id' => 'app',
+    'name' => 'Where are you Chumba',
+    'basePath' => $basePath,
     'bootstrap' => ['log'],
-    'controllerNamespace' => 'app\commands',
+    'language' => 'ru-RU',
+    'runtimePath' => $webroot . '/runtime',
+    'vendorPath' => $webroot . '/vendor',
+    'defaultRoute' => '/site/index',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
-        '@tests' => '@app/tests',
     ],
     'components' => [
         'cache' => [

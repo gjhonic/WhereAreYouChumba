@@ -2,6 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Game;
+use app\models\GameStatus;
+use app\models\User;
+use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -50,18 +54,21 @@ class GameController extends Controller
         ];
     }
 
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
-    public function actionCheckGame()
+    public function actionRun(string $codeGame = null)
     {
-        return $this->render('index');
-    }
+        $user = User::getUser(Yii::$app->request->userIP);
 
-    public function actionTest()
-    {
-        return $this->asJson(['data' => 123]);
+        if (empty($codeGame)) {
+
+            $newGame = new Game();
+            $newGame->user_id = $user->id;
+            $newGame->status_id = GameStatus::NEW_GAME;
+            $newGame->
+
+        } else {
+
+        }
+
+        return $this->render('index');
     }
 }

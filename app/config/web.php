@@ -1,5 +1,8 @@
 <?php
-
+if (!file_exists(__DIR__ . '/.env')) {
+    echo '<strong>Error</strong>: Create file <strong>.env</strong> in app/config path';
+    die(0);
+}
 $_ENV = array_merge($_ENV, require(__DIR__ . '/.env'));
 
 $db = require __DIR__ . '/db.php';
@@ -11,7 +14,7 @@ $webroot = dirname($basePath);
 
 $config = [
     'id' => 'app',
-    'name' => 'Try Explain',
+    'name' => 'Where are you Chumba',
     'basePath' => $basePath,
     'bootstrap' => ['log'],
     'language' => 'ru-RU',
